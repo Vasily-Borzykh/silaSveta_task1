@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <title>Список ссылок</title>
+</head>
+<body>
+<div class="container mt-5">
+    <h1>Список ссылок</h1>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Короткая ссылка</th>
+                <th>Оригинальная ссылка</th>
+                <th>Дата создания</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for link in links %}
+            <tr>
+                <td><a href="/{{ link.short_code }}/" target="_blank">{{ request.build_absolute_uri }}/{{ link.short_code }}</a></td>
+                <td>{{ link.original_url }}</td>
+                <td>{{ link.created_at }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
